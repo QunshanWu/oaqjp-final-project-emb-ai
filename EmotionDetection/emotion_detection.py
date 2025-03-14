@@ -10,7 +10,12 @@ def emotion_detector(text_to_analyse):
     status_code = response.status_code
     
     if status_code == 400:
-       return None;
+        formatted_response = { 'anger': None,
+                             'disgust': None,
+                             'fear': None,
+                             'joy': None,
+                             'sadness': None,
+                             'dominant_emotion': None }
     else:
         res = json.loads(response.text)
         formatted_response = res['emotionPredictions'][0]['emotion']
